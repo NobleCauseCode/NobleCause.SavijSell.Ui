@@ -1,26 +1,36 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NobleCause.SavijSell.Ui.Models;
-using System;
-using System.Collections.Generic;
+using NobleCause.SavijSell.Ui.Services;
+using NobleCause.SavijSell.Ui.ViewModels;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NobleCause.SavijSell.Ui.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IProductsService _productsService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,
+                              IProductsService productsService)
         {
             _logger = logger;
+            _productsService = productsService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            // call service
+            //var products = _productsService.GetProducts();
+            // 
+            // 
+            var viewModel = new HomeViewModel
+            {
+                Products = _productsService.GetProducts()
+            };
+
+            return View(viewModel);
         }
 
         public IActionResult Privacy()
