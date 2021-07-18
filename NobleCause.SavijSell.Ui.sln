@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NobleCause.SavijSell.Ui", "NobleCause.SavijSell.Ui\NobleCause.SavijSell.Ui.csproj", "{8EC94599-43C9-4C32-BB4C-33A5B3C2B5C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EC94599-43C9-4C32-BB4C-33A5B3C2B5C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EC94599-43C9-4C32-BB4C-33A5B3C2B5C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EC94599-43C9-4C32-BB4C-33A5B3C2B5C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EC94599-43C9-4C32-BB4C-33A5B3C2B5C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FBA79E72-BEE1-46DB-BBC7-383B7C5E40D5}
+	EndGlobalSection
+EndGlobal
