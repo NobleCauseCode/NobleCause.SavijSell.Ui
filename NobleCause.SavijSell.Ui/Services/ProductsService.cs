@@ -1,6 +1,7 @@
 ﻿using NobleCause.SavijSell.Ui.Models;
 using NobleCause.SavijSell.Ui.Repositories;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace NobleCause.SavijSell.Ui.Services
 {
@@ -13,9 +14,9 @@ namespace NobleCause.SavijSell.Ui.Services
             _productsRepository = productsRepository;
         }
 
-        public List<Product> GetProducts()
+        public async Task<List<Product>> GetProducts()
         {
-            return _productsRepository.GetProducts();
+            return await _productsRepository.GetProducts();
         }
     }
 }

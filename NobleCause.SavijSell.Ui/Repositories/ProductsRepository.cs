@@ -1,35 +1,25 @@
-﻿using NobleCause.SavijSell.Ui.Models;
-using System;
+﻿using Flurl;
+using Flurl.Http;
+using NobleCause.SavijSell.Ui.Models;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
 
 namespace NobleCause.SavijSell.Ui.Repositories
 {
     public class ProductsRepository : IProductsRepository
     {
-        public List<Product> GetProducts()
+        public async Task<List<Product>> GetProducts()
         {
-            // Call Api
-            var products = new List<Product>();
 
-            products.Add(new Product
-            {
-                Id = 1,
-                Title = "Black Bag",
-                Description = "A black bag - nice!",
-                Image = $"/assets/images/1.jpg",
-                Location = "Someplace, NC",
-                Price = 50m
-            });
-            products.Add(new Product
-            {
-                Id = 2,
-                Title = "Blue Shirt",
-                Description = "A blue t-shirt",
-                Image = $"/assets/images/2.jpg",
-                Location = "SomeplaceElse, NC",
-                Price = 15m
-            });
-            return products;
+            return await "https://localhost:44328"
+                         .AppendPathSegment("/api/Products")
+                         .GetJsonAsync<List<Product>>();
+
+            //var httpClient = new HttpClient();
+            //var products = await httpClient.GetFromJsonAsync<List<Product>>("https://localhost:44328/api/Products");
+            //return products;
         }
     }
 }

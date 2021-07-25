@@ -4,6 +4,7 @@ using NobleCause.SavijSell.Ui.Models;
 using NobleCause.SavijSell.Ui.Services;
 using NobleCause.SavijSell.Ui.ViewModels;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace NobleCause.SavijSell.Ui.Controllers
 {
@@ -19,7 +20,7 @@ namespace NobleCause.SavijSell.Ui.Controllers
             _productsService = productsService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             // call service
             //var products = _productsService.GetProducts();
@@ -27,7 +28,7 @@ namespace NobleCause.SavijSell.Ui.Controllers
             // 
             var viewModel = new HomeViewModel
             {
-                Products = _productsService.GetProducts()
+                Products = await _productsService.GetProducts()
             };
 
             return View(viewModel);
