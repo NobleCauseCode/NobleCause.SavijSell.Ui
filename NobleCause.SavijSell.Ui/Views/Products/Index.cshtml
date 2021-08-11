@@ -1,4 +1,4 @@
-﻿@model NobleCause.SavijSell.Ui.ViewModels.HomeViewModel
+﻿@model NobleCause.SavijSell.Ui.ViewModels.ProductsViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -13,7 +13,7 @@
             <div class="card" style="width: 18rem;">
                 <img src="@product.Image" class="card-img-top" alt="purse-picture">
                 <div class="card-body">
-                    <h5 class="card-title">@product.Title</h5>
+                    <h5 class="card-title">@Html.ActionLink(@product.Title, "ProductDetails", "Products", new { id = product.Id })</h5>
                     <div>@string.Format("{0:c2}", product.Price)</div>
                     <div>@product.Location</div>
                 </div>

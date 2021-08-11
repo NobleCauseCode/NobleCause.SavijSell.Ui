@@ -14,6 +14,11 @@ namespace NobleCause.SavijSell.Ui.Services
             _productsRepository = productsRepository;
         }
 
+        public async Task<Product> GetProductById(int id)
+        {
+            return await _productsRepository.GetProductsById(id);
+        }
+
         public async Task<List<Product>> GetProducts()
         {
             return await _productsRepository.GetProducts();

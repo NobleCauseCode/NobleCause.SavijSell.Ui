@@ -7,5 +7,6 @@ namespace NobleCause.SavijSell.Ui.Repositories
     public interface IProductsRepository
     {
         Task<List<Product>> GetProducts();
+        Task<Product> GetProductsById(int id);
     }
 }

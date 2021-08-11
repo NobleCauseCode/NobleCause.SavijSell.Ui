@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace NobleCause.SavijSell.Ui.ViewModels
 {
-    public class HomeViewModel
+    public class ProductsViewModel
     {
         public List<Product> Products { get; set; }
     }

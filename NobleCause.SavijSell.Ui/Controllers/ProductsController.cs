@@ -3,17 +3,18 @@ using Microsoft.Extensions.Logging;
 using NobleCause.SavijSell.Ui.Models;
 using NobleCause.SavijSell.Ui.Services;
 using NobleCause.SavijSell.Ui.ViewModels;
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace NobleCause.SavijSell.Ui.Controllers
 {
-    public class HomeController : Controller
+    public class ProductsController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<ProductsController> _logger;
         private readonly IProductsService _productsService;
 
-        public HomeController(ILogger<HomeController> logger,
+        public ProductsController(ILogger<ProductsController> logger,
                               IProductsService productsService)
         {
             _logger = logger;
@@ -26,12 +27,23 @@ namespace NobleCause.SavijSell.Ui.Controllers
             //var products = _productsService.GetProducts();
             // 
             // 
-            var viewModel = new HomeViewModel
+            var viewModel = new ProductsViewModel
             {
                 Products = await _productsService.GetProducts()
             };
 
             return View(viewModel);
+        }
+
+        public async Task<IActionResult> ProductDetails()
+        {
+            var viewModel = new ProductDetailViewModel
+            {
+                SelectedProduct = await _productsService.GetProductById(
+                                            Convert.ToInt32(Request.RouteValues["id"]))
+            };
+
+            return View("ProductDetails", viewModel);
         }
 
         public IActionResult Privacy()

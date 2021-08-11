@@ -21,5 +21,12 @@ namespace NobleCause.SavijSell.Ui.Repositories
             //var products = await httpClient.GetFromJsonAsync<List<Product>>("https://localhost:44328/api/Products");
             //return products;
         }
+
+        public async Task<Product> GetProductsById(int id)
+        {
+            return await "https://localhost:44328"
+                        .AppendPathSegment($"/api/Products/{id}")
+                        .GetJsonAsync<Product>();
+        }
     }
 }

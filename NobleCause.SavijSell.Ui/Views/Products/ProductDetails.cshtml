@@ -1,0 +1,19 @@
+﻿@model NobleCause.SavijSell.Ui.ViewModels.ProductDetailViewModel
+@{
+    ViewData["Title"] = "Product Details";
+}
+<div class="d-flex flex-row justify-content-center align-items-center">
+    <div class="d-flex flex-column align-items-center p-2">
+        <h1>@Model.SelectedProduct.Title</h1>
+        <img class="card-img-top card-image" src="@Model.SelectedProduct.Image" alt="@Model.SelectedProduct.Title" />
+        <div>@Model.SelectedProduct.Location</div>
+        <div class="d-flex flex-column align-items-center p-2">
+            <h1>@string.Format("{0:C2}", Model.SelectedProduct.Price)</h1>
+            <button class="btn btn-success">Buy It Now!</button>
+        </div>
+    </div>
+
+
+</div>
+
+
