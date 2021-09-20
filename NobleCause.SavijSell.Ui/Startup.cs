@@ -28,6 +28,9 @@ namespace NobleCause.SavijSell.Ui
             services.AddControllersWithViews();
             services.AddSingleton<IProductsService, ProductsService>();
             services.AddSingleton<IProductsRepository, ProductsRepository>();
+            services.AddSingleton<IUserManagementService, UserManagementService>();
+            services.AddSingleton<IUserManagementRepository, UserManagementRepository>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
