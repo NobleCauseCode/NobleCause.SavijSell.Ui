@@ -10,8 +10,24 @@ namespace NobleCause.SavijSell.Ui.Repositories
 {
     public class UserManagementRepository : IUserManagementRepository
     {
-        public async Task SignUp(string firstName, string lastName, string email, 
-                           string encryptedPassword, string userName, 
+        public async Task<string> LoginAsync(string email, string password)
+        {
+            var userLogin = new UserLogin
+            {
+                Email = email,
+                Password = password
+            };
+
+            var token = await "https://localhost:44328/"
+                     .AppendPathSegment("/api/token")
+                     .PostJsonAsync(userLogin).ReceiveJson<string>();
+
+            return token;
+
+        }
+
+        public async Task SignUp(string firstName, string lastName, string email,
+                           string password, string userName,
                            string postalCode)
         {
             var userSignUp = new UserSignUp
@@ -19,7 +35,7 @@ namespace NobleCause.SavijSell.Ui.Repositories
                 FirstName = firstName,
                 LastName = lastName,
                 Email = email,
-                Password = encryptedPassword,
+                Password = password,
                 UserName = userName,
                 PostalCode = postalCode
             };

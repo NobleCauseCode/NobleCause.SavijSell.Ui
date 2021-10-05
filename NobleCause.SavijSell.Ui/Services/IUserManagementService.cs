@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace NobleCause.SavijSell.Ui.Services
 {
@@ -9,6 +6,6 @@ namespace NobleCause.SavijSell.Ui.Services
     {
         Task SignUp(string firstName, string lastName, string email, 
                     string password, string userName, string postalCode);
-
+        Task<string> LoginAsync(string email, string password);
     }
 }

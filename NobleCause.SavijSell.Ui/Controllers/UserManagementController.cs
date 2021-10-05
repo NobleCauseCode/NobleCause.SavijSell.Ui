@@ -42,7 +42,15 @@ namespace NobleCause.SavijSell.Ui.Controllers
             await _userManagementService.SignUp(viewModel.FirstName, viewModel.LastName,
                                                 viewModel.Email, viewModel.Password,
                                                 viewModel.UserName, viewModel.PostalCode);
-            await Task.CompletedTask;
+            return RedirectToAction("ConfirmationReminder");
+        }
+
+        [HttpPost]
+        [ActionName("LoginPostAsync")]
+        public async Task<IActionResult> LoginPostAsync(LoginViewModel viewModel)
+        {
+           var token = await _userManagementService.LoginAsync(viewModel.Email, viewModel.Password);
+
             return RedirectToAction("ConfirmationReminder");
         }
     }
