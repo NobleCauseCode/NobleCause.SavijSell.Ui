@@ -1,10 +1,9 @@
-﻿using NobleCause.SavijSell.Ui.Repositories;
+﻿using NobleCause.SavijSell.Ui.Models;
+using NobleCause.SavijSell.Ui.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Helpers;
-
 
 namespace NobleCause.SavijSell.Ui.Services
 {
@@ -17,7 +16,7 @@ namespace NobleCause.SavijSell.Ui.Services
             _userManagementRepository = userManagementRepository;
         }
 
-        public async Task<string> LoginAsync(string email, string password)
+        public async Task<TokenResponse> LoginAsync(string email, string password)
         {
             return await _userManagementRepository.LoginAsync(email, password);
         }

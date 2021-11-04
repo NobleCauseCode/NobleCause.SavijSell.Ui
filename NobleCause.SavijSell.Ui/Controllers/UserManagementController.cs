@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using NobleCause.SavijSell.Ui.Services;
 using NobleCause.SavijSell.Ui.ViewModels;
 using System;
@@ -49,9 +50,16 @@ namespace NobleCause.SavijSell.Ui.Controllers
         [ActionName("LoginPostAsync")]
         public async Task<IActionResult> LoginPostAsync(LoginViewModel viewModel)
         {
-           var token = await _userManagementService.LoginAsync(viewModel.Email, viewModel.Password);
-
-            return RedirectToAction("ConfirmationReminder");
+            var tokenResponse = await _userManagementService
+                                .LoginAsync(viewModel.Email, viewModel.Password);
+            Response.Cookies.Append(
+                Constants.XAccessToken,
+                tokenResponse.Token, new CookieOptions
+                {
+                    HttpOnly = true,
+                    SameSite = SameSiteMode.Strict
+                });
+            return RedirectToAction("Index", "Products");
         }
     }
 }

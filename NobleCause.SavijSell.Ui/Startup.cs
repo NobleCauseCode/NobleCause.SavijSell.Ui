@@ -1,5 +1,7 @@
+using Flurl.Http.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +32,8 @@ namespace NobleCause.SavijSell.Ui
             services.AddSingleton<IProductsRepository, ProductsRepository>();
             services.AddSingleton<IUserManagementService, UserManagementService>();
             services.AddSingleton<IUserManagementRepository, UserManagementRepository>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IFlurlClientFactory, PerBaseUrlFlurlClientFactory>();
             
         }
 
@@ -57,7 +61,7 @@ namespace NobleCause.SavijSell.Ui
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Products}/{action=Index}/{id?}");
+                    pattern: "{controller=UserManagement}/{action=Index}/{id?}");
             });
         }
     }

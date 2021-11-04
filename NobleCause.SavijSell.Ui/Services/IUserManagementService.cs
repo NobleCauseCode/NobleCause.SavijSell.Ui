@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using NobleCause.SavijSell.Ui.Models;
+using System.Threading.Tasks;
 
 namespace NobleCause.SavijSell.Ui.Services
 {
@@ -6,6 +7,6 @@ namespace NobleCause.SavijSell.Ui.Services
     {
         Task SignUp(string firstName, string lastName, string email, 
                     string password, string userName, string postalCode);
-        Task<string> LoginAsync(string email, string password);
+        Task<TokenResponse> LoginAsync(string email, string password);
     }
 }

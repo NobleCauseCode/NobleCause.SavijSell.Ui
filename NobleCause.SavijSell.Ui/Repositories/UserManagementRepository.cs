@@ -10,7 +10,7 @@ namespace NobleCause.SavijSell.Ui.Repositories
 {
     public class UserManagementRepository : IUserManagementRepository
     {
-        public async Task<string> LoginAsync(string email, string password)
+        public async Task<TokenResponse> LoginAsync(string email, string password)
         {
             var userLogin = new UserLogin
             {
@@ -18,12 +18,9 @@ namespace NobleCause.SavijSell.Ui.Repositories
                 Password = password
             };
 
-            var token = await "https://localhost:44328/"
+            return await "https://localhost:44328/"
                      .AppendPathSegment("/api/token")
-                     .PostJsonAsync(userLogin).ReceiveJson<string>();
-
-            return token;
-
+                     .PostJsonAsync(userLogin).ReceiveJson<TokenResponse>();
         }
 
         public async Task SignUp(string firstName, string lastName, string email,
