@@ -10,9 +10,9 @@
         @foreach (var product in Model.Products)
         {
         <div class="col">
-            <div class="card" style="width: 18rem;">
-                <img src="@product.Image" class="card-img-top" alt="purse-picture">
-                <div class="card-body">
+            <div class="card mx-auto" style="width: 18rem;">
+                <img src="assets/@product.Image" class="card-img-top" alt="purse-picture"/>
+                <div class="card-body bg-light">
                     <h5 class="card-title">@Html.ActionLink(@product.Title, "ProductDetails", "Products", new { id = product.Id })</h5>
                     <div>@string.Format("{0:c2}", product.Price)</div>
                     <div>@product.Location</div>
