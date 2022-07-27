@@ -29,5 +29,12 @@ namespace NobleCause.SavijSell.Ui.Services
                                                    password,
                                                    userName, postalCode);
         }
+
+        public async Task<bool> VerifyEmail(string verificationData)
+        {
+            var userId = await _userManagementRepository.GetUserIdByVerification(verificationData);
+
+            return userId > -1;
+        }
     }
 }
