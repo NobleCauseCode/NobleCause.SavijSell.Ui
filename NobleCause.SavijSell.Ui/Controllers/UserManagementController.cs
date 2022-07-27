@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NobleCause.SavijSell.Ui.Models;
 using NobleCause.SavijSell.Ui.Services;
 using NobleCause.SavijSell.Ui.ViewModels;
 using System;
@@ -43,6 +44,7 @@ namespace NobleCause.SavijSell.Ui.Controllers
             await _userManagementService.SignUp(viewModel.FirstName, viewModel.LastName,
                                                 viewModel.Email, viewModel.Password,
                                                 viewModel.UserName, viewModel.PostalCode);
+
             return RedirectToAction("ConfirmationReminder");
         }
 
@@ -60,6 +62,19 @@ namespace NobleCause.SavijSell.Ui.Controllers
                     SameSite = SameSiteMode.Strict
                 });
             return RedirectToAction("Index", "Products");
+        }
+
+        [Route("VerifyEmail/{verificationData}")]
+        public async Task<IActionResult> VerifyEmail( string verificationData)
+        {
+            var verified =  await _userManagementService.VerifyEmail(verificationData);
+            if(verified)
+            {
+                return View("EmailVerified");
+            }
+
+            return View("VerifyFailed");
+            
         }
     }
 }

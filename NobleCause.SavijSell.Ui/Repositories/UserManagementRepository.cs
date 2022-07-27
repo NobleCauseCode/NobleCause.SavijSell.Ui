@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Flurl;
 using Flurl.Http;
+using System.Net;
 
 namespace NobleCause.SavijSell.Ui.Repositories
 {
@@ -40,6 +41,19 @@ namespace NobleCause.SavijSell.Ui.Repositories
             await "https://localhost:44328/"
                    .AppendPathSegment("/api/Users")
                    .PostJsonAsync(userSignUp);
+        }
+
+        public async Task<int> GetUserIdByVerification(string verificationData)
+        {
+            var verifyEmailResponse = await "https://localhost:44328/"
+                     .AppendPathSegment($"/api/Users/VerifyEmail/{verificationData}")
+                     .AllowHttpStatus(HttpStatusCode.OK, HttpStatusCode.NotFound)
+                     .GetJsonAsync<VerifyEmailResponse>();
+            if(verifyEmailResponse == null)
+            {
+                return -1;
+            }
+            return verifyEmailResponse.UserId;
         }
     }
 }

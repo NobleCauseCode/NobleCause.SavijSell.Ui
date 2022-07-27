@@ -8,5 +8,6 @@ namespace NobleCause.SavijSell.Ui.Services
         Task SignUp(string firstName, string lastName, string email, 
                     string password, string userName, string postalCode);
         Task<TokenResponse> LoginAsync(string email, string password);
+        Task<bool> VerifyEmail(string verificationData);
     }
 }
